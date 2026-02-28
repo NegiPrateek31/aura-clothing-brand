@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
     return (
         <div className="product-card fade-in">
             <Link to={`/product/${product.id}`} className="product-image-container">
-                <img src={product.image} alt={product.name} className="product-image" />
+                <img src={product.image} alt={`Negi Clothing ${product.name}`} className="product-image" loading="lazy" />
                 <div className="product-overlay">
                     <button className="quick-add-btn">
                         <ShoppingBag size={18} /> Quick Add

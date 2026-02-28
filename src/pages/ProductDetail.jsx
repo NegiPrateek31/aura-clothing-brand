@@ -5,9 +5,9 @@ import './ProductDetail.css';
 
 // Mock DB
 const PRODUCTS = {
-    '1': { id: 1, name: 'Essential Denim Jacket', price: 129.00, image: '/images/product1.png', category: 'Outerwear', desc: 'Crafted from premium mid-weight denim, this jacket offers a modern, relaxed fit. Features custom engraved hardware and reinforced stitching for longevity.' },
-    '2': { id: 2, name: 'Signature Knit Sweater', price: 89.00, image: '/images/product2.png', category: 'Knitwear', desc: 'An ultra-soft blend of merino wool and organic cotton. Designed with dropped shoulders and a slightly oversized silhouette for effortless layering.' },
-    '3': { id: 3, name: 'Minimalist Wide-Leg Trousers', price: 110.00, image: '/images/product3.png', category: 'Bottoms', desc: 'Flowy, high-waisted trousers with subtle pleating. Perfect for transitioning from day to night with unparalleled comfort and style.' }
+    '1': { id: 1, name: 'Essential Denim Jacket', price: 129.00, image: '/images/product1.webp', category: 'Outerwear', desc: 'Crafted from premium mid-weight denim, this jacket offers a modern, relaxed fit. Features custom engraved hardware and reinforced stitching for longevity.' },
+    '2': { id: 2, name: 'Signature Knit Sweater', price: 89.00, image: '/images/product2.webp', category: 'Knitwear', desc: 'An ultra-soft blend of merino wool and organic cotton. Designed with dropped shoulders and a slightly oversized silhouette for effortless layering.' },
+    '3': { id: 3, name: 'Minimalist Wide-Leg Trousers', price: 110.00, image: '/images/product3.webp', category: 'Bottoms', desc: 'Flowy, high-waisted trousers with subtle pleating. Perfect for transitioning from day to night with unparalleled comfort and style.' }
 };
 
 const ProductDetail = () => {
@@ -29,11 +29,11 @@ const ProductDetail = () => {
 
             <div className="product-detail-container container">
                 <div className="product-gallery">
-                    <img src={product.image} alt={product.name} className="main-image" />
+                    <img src={product.image} alt={`Negi Clothing ${product.name}`} className="main-image" loading="lazy" />
                     <div className="thumbnail-grid">
-                        <img src={product.image} alt={product.name} className="thumbnail active" />
-                        <img src={product.image} alt={product.name} className="thumbnail" />
-                        <img src={product.image} alt={product.name} className="thumbnail" />
+                        <img src={product.image} alt={`Negi Clothing ${product.name} thumbnail`} className="thumbnail active" loading="lazy" />
+                        <img src={product.image} alt={`Negi Clothing ${product.name} thumbnail`} className="thumbnail" loading="lazy" />
+                        <img src={product.image} alt={`Negi Clothing ${product.name} thumbnail`} className="thumbnail" loading="lazy" />
                     </div>
                 </div>
 

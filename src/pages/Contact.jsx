@@ -1,11 +1,16 @@
+import { Helmet } from 'react-helmet-async';
 import './Contact.css';
 
 const Contact = () => {
     return (
         <div className="contact-page fade-in">
+            <Helmet>
+                <title>Contact Negi Clothing – Get in Touch</title>
+                <meta name="description" content="Contact Negi Clothing for inquiries, collaborations, and customer support. We're here to help you." />
+            </Helmet>
             <div className="contact-header">
                 <div className="container">
-                    <h1>Contact Us</h1>
+                    <h1>Contact Negi Clothing – Get in Touch</h1>
                     <p>We'd love to hear from you.</p>
                 </div>
             </div>

@@ -1,11 +1,16 @@
+import { Helmet } from 'react-helmet-async';
 import './About.css';
 
 const About = () => {
     return (
         <div className="about-page fade-in">
+            <Helmet>
+                <title>About Negi Clothing – Our Story & Vision</title>
+                <meta name="description" content="Learn about Negi Clothing’s journey, mission, and commitment to delivering premium fashion and unique streetwear designs." />
+            </Helmet>
             <div className="about-hero">
                 <div className="container">
-                    <h1>Our Story</h1>
+                    <h1>About Negi Clothing – Our Story & Vision</h1>
                     <p className="subtitle">Defining the modern aesthetic.</p>
                 </div>
             </div>
@@ -18,7 +23,7 @@ const About = () => {
                         <p>Every piece in our collection is meticulously crafted with attention to detail, using only the finest sustainable materials. Our goal is to build a wardrobe that you can rely on day after day, year after year.</p>
                     </div>
                     <div className="about-image-container">
-                        <img src="/images/about.png" alt="NEGI Lifestyle" className="about-image" />
+                        <img src="/images/about.webp" alt="Negi Clothing lifestyle apparel" className="about-image" loading="lazy" />
                     </div>
                 </div>
 

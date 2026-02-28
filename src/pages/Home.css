@@ -12,7 +12,7 @@
     text-align: center;
     position: relative;
     background-color: var(--color-bg-secondary);
-    background-image: url('/images/hero.png');
+    background-image: url('/images/hero.webp');
     background-size: cover;
     background-position: center;
     overflow: hidden;
