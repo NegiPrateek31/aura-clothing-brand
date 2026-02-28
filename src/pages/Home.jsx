@@ -14,15 +14,26 @@ const Home = () => {
     return (
         <div className="home-page fade-in">
             <Helmet>
-                <title>Negi Clothing – Premium Custom Streetwear Brand</title>
-                <meta name="description" content="Shop premium custom streetwear at Negi Clothing. Explore unique designs, quality fabrics, and stylish apparel made for modern fashion." />
+                <title>Premium Streetwear Brand | Negi Clothing India</title>
+                <meta name="description" content="Shop the best premium custom streetwear brand in India. Negi Clothing offers high-quality, sustainable online streetwear for the modern aesthetic." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                      "@context": "https://schema.org",
+                      "@type": "Organization",
+                      "name": "Negi Clothing",
+                      "url": "https://negiclothing.vercel.app/",
+                      "logo": "https://negiclothing.vercel.app/images/hero.webp"
+                    }
+                    `}
+                </script>
             </Helmet>
             <section className="hero">
                 <div className="hero-content">
-                    <h1>Negi Clothing – Premium Custom Streetwear</h1>
+                    <h1>Premium Streetwear Brand India</h1>
                     <p>Discover our latest collection of premium, sustainable essentials designed for the modern wardrobe.</p>
                     <Link to="/shop" className="btn btn-primary">
-                        Shop the Collection <ArrowRight size={18} />
+                        Explore our collection <ArrowRight size={18} />
                     </Link>
                 </div>
             </section>

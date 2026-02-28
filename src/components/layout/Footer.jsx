@@ -20,7 +20,7 @@ const Footer = () => {
                         <h4>Company</h4>
                         <Link to="/about">About Us</Link>
                         <Link to="/contact">Contact</Link>
-                        <Link to="/faq">FAQ</Link>
+                        <Link to="/blog">Blog</Link>
                     </div>
                 </div>
                 <div className="footer-newsletter">

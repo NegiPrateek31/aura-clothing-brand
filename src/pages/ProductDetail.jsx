@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Check } from 'lucide-react';
 import './ProductDetail.css';
 
@@ -23,6 +24,32 @@ const ProductDetail = () => {
 
     return (
         <div className="product-detail-page fade-in">
+            <Helmet>
+                <title>{`${product.name} | Premium Streetwear | Negi Clothing`}</title>
+                <meta name="description" content={product.desc} />
+                <script type="application/ld+json">
+                    {`
+                    {
+                      "@context": "https://schema.org",
+                      "@type": "Product",
+                      "name": "${product.name}",
+                      "image": "https://negiclothing.vercel.app${product.image}",
+                      "description": "${product.desc}",
+                      "brand": {
+                        "@type": "Brand",
+                        "name": "Negi Clothing"
+                      },
+                      "offers": {
+                        "@type": "Offer",
+                        "priceCurrency": "USD",
+                        "price": "${product.price}",
+                        "itemCondition": "https://schema.org/NewCondition",
+                        "availability": "https://schema.org/InStock"
+                      }
+                    }
+                    `}
+                </script>
+            </Helmet>
             <div className="breadcrumb container">
                 <Link to="/shop" className="back-link"><ArrowLeft size={16} /> Back to Shop</Link>
             </div>

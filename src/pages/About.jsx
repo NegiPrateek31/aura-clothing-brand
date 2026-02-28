@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import './About.css';
 
 const About = () => {
@@ -20,7 +21,7 @@ const About = () => {
                     <div className="about-text">
                         <h2>The NEGI Philosophy</h2>
                         <p>Founded on the principles of minimalism and timeless design, NEGI was created to offer an alternative to fast fashion. We believe that true style is not about following trends, but about finding confidence in simplicity.</p>
-                        <p>Every piece in our collection is meticulously crafted with attention to detail, using only the finest sustainable materials. Our goal is to build a wardrobe that you can rely on day after day, year after year.</p>
+                        <p>Every piece in our collection is meticulously crafted with attention to detail. Our goal is to build a wardrobe that you can rely on day after day. Ready to upgrade? <Link to="/shop" style={{ textDecoration: 'underline' }}>Explore our collection.</Link></p>
                     </div>
                     <div className="about-image-container">
                         <img src="/images/about.webp" alt="Negi Clothing lifestyle apparel" className="about-image" loading="lazy" />
