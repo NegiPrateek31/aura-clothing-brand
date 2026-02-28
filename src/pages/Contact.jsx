@@ -17,14 +17,14 @@ const Contact = () => {
 
                     <div className="info-block">
                         <h3>Customer Service</h3>
-                        <p>Email: support@auraclothing.com</p>
+                        <p>Email: support@negiclothing.com</p>
                         <p>Phone: +1 (555) 123-4567</p>
                         <p>Hours: Mon-Fri, 9am - 5pm EST</p>
                     </div>
 
                     <div className="info-block">
                         <h3>Press & Partnerships</h3>
-                        <p>Email: press@auraclothing.com</p>
+                        <p>Email: press@negiclothing.com</p>
                     </div>
                 </div>
 

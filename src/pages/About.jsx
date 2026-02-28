@@ -13,12 +13,12 @@ const About = () => {
             <div className="container about-content">
                 <div className="about-grid">
                     <div className="about-text">
-                        <h2>The AURA Philosophy</h2>
-                        <p>Founded on the principles of minimalism and timeless design, AURA was created to offer an alternative to fast fashion. We believe that true style is not about following trends, but about finding confidence in simplicity.</p>
+                        <h2>The NEGI Philosophy</h2>
+                        <p>Founded on the principles of minimalism and timeless design, NEGI was created to offer an alternative to fast fashion. We believe that true style is not about following trends, but about finding confidence in simplicity.</p>
                         <p>Every piece in our collection is meticulously crafted with attention to detail, using only the finest sustainable materials. Our goal is to build a wardrobe that you can rely on day after day, year after year.</p>
                     </div>
                     <div className="about-image-container">
-                        <img src="/images/about.png" alt="AURA Lifestyle" className="about-image" />
+                        <img src="/images/about.png" alt="NEGI Lifestyle" className="about-image" />
                     </div>
                 </div>
 

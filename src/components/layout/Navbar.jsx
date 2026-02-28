@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <header className="navbar fade-in">
             <div className="container nav-content">
-                <Link to="/" className="nav-brand">AURA.</Link>
+                <Link to="/" className="nav-brand">NEGI.</Link>
                 <nav className="nav-links">
                     <Link to="/">Home</Link>
                     <Link to="/shop">Shop</Link>

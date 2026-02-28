@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="footer fade-in">
             <div className="container footer-content">
                 <div className="footer-brand">
-                    <h3>AURA.</h3>
+                    <h3>NEGI.</h3>
                     <p>Elevating everyday essentials through timeless design and sustainable practices.</p>
                 </div>
                 <div className="footer-links">
@@ -32,7 +32,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer-bottom">
-                <p>&copy; {new Date().getFullYear()} AURA Clothing. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} NEGI Clothing. All rights reserved.</p>
             </div>
         </footer>
     );
