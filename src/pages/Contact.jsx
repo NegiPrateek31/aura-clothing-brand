@@ -1,16 +1,29 @@
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/ui/SEO';
 import './Contact.css';
+
+const SITE_URL = 'https://negiclothing.vercel.app';
+
+const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Contact', item: `${SITE_URL}/contact` },
+    ],
+};
 
 const Contact = () => {
     return (
         <div className="contact-page fade-in">
-            <Helmet>
-                <title>Contact Negi Clothing – Get in Touch</title>
-                <meta name="description" content="Contact Negi Clothing for inquiries, collaborations, and customer support. We're here to help you." />
-            </Helmet>
+            <SEO
+                title="Contact Negi Clothing - Get in Touch"
+                description="Contact Negi Clothing for inquiries, collaborations, and customer support. We're here to help you."
+                path="/contact"
+                structuredData={breadcrumbSchema}
+            />
             <div className="contact-header">
                 <div className="container">
-                    <h1>Contact Negi Clothing – Get in Touch</h1>
+                    <h1>Contact Negi Clothing - Get in Touch</h1>
                     <p>We'd love to hear from you.</p>
                 </div>
             </div>

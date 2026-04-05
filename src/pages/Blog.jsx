@@ -1,15 +1,48 @@
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import SEO from '../components/ui/SEO';
 import './Blog.css';
+
+const SITE_URL = 'https://negiclothing.vercel.app';
+const canonical = `${SITE_URL}/blog`;
+
+const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: canonical },
+    ],
+};
+
+const blogPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: 'How to Choose the Right Streetwear for Your Style',
+    description: 'A concise guide on building a premium streetwear wardrobe with silhouettes, fabrics, and layering tips.',
+    image: [`${SITE_URL}/images/about.webp`],
+    datePublished: '2026-10-15',
+    dateModified: '2026-10-15',
+    author: { '@type': 'Organization', name: 'Negi Clothing' },
+    publisher: {
+        '@type': 'Organization',
+        name: 'Negi Clothing',
+        logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo-n.png` },
+    },
+    mainEntityOfPage: canonical,
+};
 
 const Blog = () => {
     return (
         <div className="blog-page fade-in container">
-            <Helmet>
-                <title>How to Choose the Right Streetwear | Negi Clothing Blog</title>
-                <meta name="description" content="Discover how to build your perfect wardrobe with our guide to choosing the right premium streetwear for your personal style." />
-            </Helmet>
+            <SEO
+                title="How to Choose the Right Streetwear | Negi Clothing Blog"
+                description="Discover how to build your perfect wardrobe with our guide to choosing the right premium streetwear for your personal style."
+                path="/blog"
+                type="article"
+                image={`${SITE_URL}/images/about.webp`}
+                structuredData={[breadcrumbSchema, blogPostingSchema]}
+            />
 
             <div className="breadcrumb">
                 <Link to="/" className="back-link"><ArrowLeft size={16} /> Back Home</Link>
@@ -19,7 +52,7 @@ const Blog = () => {
                 <header className="blog-header">
                     <span className="blog-category">Style Guide</span>
                     <h1>How to Choose the Right Streetwear for Your Style</h1>
-                    <p className="blog-date">October 15, 2026 • 4 min read</p>
+                    <p className="blog-date">October 15, 2026 - 4 min read</p>
                 </header>
 
                 <img src="/images/about.webp" alt="Minimalist premium streetwear style guide" className="blog-hero-img" loading="lazy" />

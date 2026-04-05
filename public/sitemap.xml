@@ -12,8 +12,28 @@
   </url>
 
   <url>
+    <loc>https://negiclothing.vercel.app/product/1</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://negiclothing.vercel.app/product/2</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://negiclothing.vercel.app/product/3</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://negiclothing.vercel.app/about</loc>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://negiclothing.vercel.app/blog</loc>
+    <priority>0.7</priority>
   </url>
 
   <url>

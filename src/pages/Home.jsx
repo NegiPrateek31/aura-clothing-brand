@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
 import ProductCard from '../components/ui/ProductCard';
+import SEO from '../components/ui/SEO';
 import './Home.css';
 
 const FEATURED_PRODUCTS = [
@@ -10,24 +10,53 @@ const FEATURED_PRODUCTS = [
     { id: 3, name: 'Minimalist Wide-Leg Trousers', price: 110.00, image: '/images/product3.webp' }
 ];
 
+const SITE_URL = 'https://negiclothing.vercel.app';
+
+const faqEntries = [
+    {
+        question: 'What makes your streetwear premium?',
+        answer: 'We use long-lasting fabrics, precise construction, and minimalist silhouettes that hold their shape so you can wear them for years.',
+    },
+    {
+        question: 'Do you ship across India?',
+        answer: 'Yes. We offer reliable shipping across India with transparent tracking and easy returns.',
+    },
+    {
+        question: 'Are your materials sustainable?',
+        answer: 'We prioritize organic cotton, low-impact dyes, and responsible manufacturing partners to keep our footprint light.',
+    },
+];
+
+const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Negi Clothing',
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/logo-n.png`,
+};
+
+const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqEntries.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+        },
+    })),
+};
+
 const Home = () => {
     return (
         <div className="home-page fade-in">
-            <Helmet>
-                <title>Premium Streetwear Brand | Negi Clothing India</title>
-                <meta name="description" content="Shop the best premium custom streetwear brand in India. Negi Clothing offers high-quality, sustainable online streetwear for the modern aesthetic." />
-                <script type="application/ld+json">
-                    {`
-                    {
-                      "@context": "https://schema.org",
-                      "@type": "Organization",
-                      "name": "Negi Clothing",
-                      "url": "https://negiclothing.vercel.app/",
-                      "logo": "https://negiclothing.vercel.app/images/hero.webp"
-                    }
-                    `}
-                </script>
-            </Helmet>
+            <SEO
+                title="Premium Streetwear Brand India"
+                description="Negi Clothing is a premium streetwear brand in India crafting sustainable, minimalist essentials designed to outlast trends."
+                path="/"
+                structuredData={[organizationSchema, faqSchema]}
+            />
             <section className="hero">
                 <div className="hero-content">
                     <h1>Premium Streetwear Brand India</h1>
@@ -53,8 +82,23 @@ const Home = () => {
             <section className="about-preview container">
                 <div className="about-preview-content">
                     <h2>Why Choose Negi Clothing?</h2>
-                    <p>We believe in doing more with less. Our garments are crafted from ethically sourced materials, ensuring both exceptional quality and minimal environmental impact.</p>
+                    <p>We believe in doing more with less. Our garments are crafted from ethically sourced materials, ensuring both exceptional quality and minimal environmental impact, reinforcing our promise as a premium streetwear brand for everyday wear.</p>
                     <Link to="/about" className="link-arrow">Our Story <ArrowRight size={16} /></Link>
+                </div>
+            </section>
+
+            <section className="faq-section container">
+                <div className="section-header">
+                    <h2>FAQs</h2>
+                    <span className="faq-tag">Answers about our premium streetwear</span>
+                </div>
+                <div className="faq-grid">
+                    {faqEntries.map((item) => (
+                        <div key={item.question} className="faq-card">
+                            <h3>{item.question}</h3>
+                            <p>{item.answer}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
         </div>

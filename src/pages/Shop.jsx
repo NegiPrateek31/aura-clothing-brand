@@ -1,6 +1,17 @@
-import { Helmet } from 'react-helmet-async';
 import ProductCard from '../components/ui/ProductCard';
+import SEO from '../components/ui/SEO';
 import './Shop.css';
+
+const SITE_URL = 'https://negiclothing.vercel.app';
+
+const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Shop', item: `${SITE_URL}/shop` },
+    ],
+};
 
 const ALL_PRODUCTS = [
     { id: 1, name: 'Essential Denim Jacket', price: 129.00, image: '/images/product1.webp', category: 'Outerwear' },
@@ -14,10 +25,12 @@ const ALL_PRODUCTS = [
 const Shop = () => {
     return (
         <div className="shop-page container fade-in">
-            <Helmet>
-                <title>Shop Premium Apparel | Negi Clothing</title>
-                <meta name="description" content="Browse Negi Clothing's collection of premium streetwear and custom apparel designed for comfort and style." />
-            </Helmet>
+            <SEO
+                title="Shop Premium Apparel"
+                description="Browse Negi Clothing's collection of premium streetwear and custom apparel designed for comfort and style."
+                path="/shop"
+                structuredData={breadcrumbSchema}
+            />
             <header className="shop-header">
                 <h1>Shop Premium Apparel</h1>
                 <div className="shop-filters">

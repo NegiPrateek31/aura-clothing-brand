@@ -1,21 +1,58 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Check } from 'lucide-react';
+import SEO from '../components/ui/SEO';
 import './ProductDetail.css';
+
+const SITE_URL = 'https://negiclothing.vercel.app';
 
 // Mock DB
 const PRODUCTS = {
     '1': { id: 1, name: 'Essential Denim Jacket', price: 129.00, image: '/images/product1.webp', category: 'Outerwear', desc: 'Crafted from premium mid-weight denim, this jacket offers a modern, relaxed fit. Features custom engraved hardware and reinforced stitching for longevity.' },
     '2': { id: 2, name: 'Signature Knit Sweater', price: 89.00, image: '/images/product2.webp', category: 'Knitwear', desc: 'An ultra-soft blend of merino wool and organic cotton. Designed with dropped shoulders and a slightly oversized silhouette for effortless layering.' },
-    '3': { id: 3, name: 'Minimalist Wide-Leg Trousers', price: 110.00, image: '/images/product3.webp', category: 'Bottoms', desc: 'Flowy, high-waisted trousers with subtle pleating. Perfect for transitioning from day to night with unparalleled comfort and style.' }
+    '3': { id: 3, name: 'Minimalist Wide-Leg Trousers', price: 110.00, image: '/images/product3.webp', category: 'Bottoms', desc: 'Flowy, high-waisted trousers with subtle pleating. Perfect for transitioning from day to night with unparalleled comfort and style.' },
 };
 
 const ProductDetail = () => {
     const { id } = useParams();
-    const product = PRODUCTS[id] || PRODUCTS['1']; // Fallback for undefined IDs
+    const product = PRODUCTS[id] || PRODUCTS['1'];
     const [selectedSize, setSelectedSize] = useState('M');
     const [isAdded, setIsAdded] = useState(false);
+
+    const canonicalPath = `/product/${product.id}`;
+    const imageUrl = `${SITE_URL}${product.image}`;
+
+    const structuredData = useMemo(() => {
+        const breadcrumb = {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Shop', item: `${SITE_URL}/shop` },
+                { '@type': 'ListItem', position: 3, name: product.name, item: `${SITE_URL}${canonicalPath}` },
+            ],
+        };
+
+        const productSchema = {
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: product.name,
+            image: [imageUrl],
+            description: product.desc,
+            brand: { '@type': 'Brand', name: 'Negi Clothing' },
+            sku: `NEGI-${product.id}`,
+            offers: {
+                '@type': 'Offer',
+                url: `${SITE_URL}${canonicalPath}`,
+                priceCurrency: 'INR',
+                price: product.price,
+                availability: 'https://schema.org/InStock',
+                itemCondition: 'https://schema.org/NewCondition',
+            },
+        };
+
+        return [breadcrumb, productSchema];
+    }, [canonicalPath, imageUrl, product]);
 
     const handleAddToCart = () => {
         setIsAdded(true);
@@ -24,32 +61,14 @@ const ProductDetail = () => {
 
     return (
         <div className="product-detail-page fade-in">
-            <Helmet>
-                <title>{`${product.name} | Premium Streetwear | Negi Clothing`}</title>
-                <meta name="description" content={product.desc} />
-                <script type="application/ld+json">
-                    {`
-                    {
-                      "@context": "https://schema.org",
-                      "@type": "Product",
-                      "name": "${product.name}",
-                      "image": "https://negiclothing.vercel.app${product.image}",
-                      "description": "${product.desc}",
-                      "brand": {
-                        "@type": "Brand",
-                        "name": "Negi Clothing"
-                      },
-                      "offers": {
-                        "@type": "Offer",
-                        "priceCurrency": "USD",
-                        "price": "${product.price}",
-                        "itemCondition": "https://schema.org/NewCondition",
-                        "availability": "https://schema.org/InStock"
-                      }
-                    }
-                    `}
-                </script>
-            </Helmet>
+            <SEO
+                title={`${product.name} | Premium Streetwear`}
+                description={product.desc}
+                path={canonicalPath}
+                image={imageUrl}
+                type="product"
+                structuredData={structuredData}
+            />
             <div className="breadcrumb container">
                 <Link to="/shop" className="back-link"><ArrowLeft size={16} /> Back to Shop</Link>
             </div>
@@ -68,7 +87,7 @@ const ProductDetail = () => {
                     <div className="product-meta">
                         <span className="product-category">{product.category}</span>
                         <h1 className="product-name">{product.name}</h1>
-                        <p className="product-price-large">${product.price.toFixed(2)}</p>
+                        <p className="product-price-large">₹{product.price.toFixed(2)}</p>
                     </div>
 
                     <div className="product-description">
@@ -109,7 +128,7 @@ const ProductDetail = () => {
                         </div>
                         <div className="accordion-item">
                             <h4>Shipping & Returns</h4>
-                            <p>Free standard shipping on orders over $150. Returns accepted within 30 days.</p>
+                            <p>Free standard shipping on orders over ₹150. Returns accepted within 30 days.</p>
                         </div>
                     </div>
                 </div>
